@@ -1,26 +1,57 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@use '~/client/styles/fonts';
+@import '~destyle.css';
+
+:root {
+  // style guide
+  // colors
+  --c-theme-primary: #437b60;
+  --c-theme-secondary: #c56860;
+  --c-accent-error: #d61e00;
+  --c-accent-yellow: #c1a944;
+  --c-mono-primary: #59534b;
+  --c-mono-secondary: rgba(60, 60, 68, 0.6);
+  --c-mono-tertiary: rgba(60, 60, 68, 0.3);
+  --c-mono-quarternary: rgba(60, 60, 68, 0.12);
+  --c-light-primary: #f6f5f3;
+  --c-light-secondary: #f2eae3;
+  --c-light-white: #ffffff;
+  --c-light-tertiary: #e6d2c8;
+  // fonts
+  --font-base: '游ゴシック体', YuGothic, '游ゴシック Medium', 'Yu Gothic Medium',
+    '游ゴシック', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+  --font-alphabet-only: 'Futura', 'Century Gothic', sans-serif;
+  // others
+  --opacity-effect-hover: 0.3;
 }
 
+// global style
+body {
+  @include fonts.body1;
+  background-color: var(--c-light-primary);
+  font-family: var(--font-base);
+  color: var(--c-mono-primary);
+}
 a {
-  color: inherit;
+  color: var(--c-theme-primary);
   text-decoration: none;
 }
+a,
+button {
+  transition: opacity 0.5s;
 
-* {
-  box-sizing: border-box;
+  @media (hover: hover) {
+    &:hover {
+      opacity: var(--opacity-effect-hover);
+    }
+  }
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.g-stop-effect {
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+    }
   }
-  body {
-    color: white;
-    background: black;
-  }
+}
+.g-underline {
+  text-decoration: underline;
 }
